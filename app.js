@@ -81,23 +81,48 @@
 // printProfileData(profileDataArgs);
 
 // -------------lesson 2 -------------------
-const fs = require('fs');
-const generatePage = require('./src/page-template');
+// const fs = require('fs');
+// const generatePage = require('./src/page-template');
 
-const profileDataArgs = process.argv.slice(2);
-//const profileDataArgs = process.argv.slice(2, process.argv.length);
+// const profileDataArgs = process.argv.slice(2);
+// //const profileDataArgs = process.argv.slice(2, process.argv.length);
 
-// saving the inputs that are entered into the array into variables
-// const name = profileDataArgs[0];
-// const github = profileDataArgs[1];
-// make this into one line:
-const [name, github] = profileDataArgs;
+// // saving the inputs that are entered into the array into variables
+// // const name = profileDataArgs[0];
+// // const github = profileDataArgs[1];
+// // make this into one line:
+// const [name, github] = profileDataArgs;
 
-// first arguement is the file name that will be created.  the second is the data
-// that is being written (html string template).  The third is the callback function
-// that will handle any errors as well as a success message.
-fs.writeFile('./index.html', generatePage(name, github), err => {
-  if (err) throw new Error(err);
+// // first arguement is the file name that will be created.  the second is the data
+// // that is being written (html string template).  The third is the callback function
+// // that will handle any errors as well as a success message.
+// fs.writeFile('./index.html', generatePage(name, github), err => {
+//   if (err) throw new Error(err);
 
-  console.log('Portfolio complete! Check out index.html to see the output!');
-});
+//   console.log('Portfolio complete! Check out index.html to see the output!');
+// });
+
+// ---------------------lesson 3 --------------------------
+const inquirer = require('inquirer');
+// const fs = require('fs');
+// const generatePage = require('./src/page-template');
+
+// const pageHTML = generatePage(name, github);
+
+// fs.writeFile('./index.html', pageHTML, err => {
+//   if (err) throw err;
+
+//   console.log('Portfolio complete! Check out index.html to see the output!');
+// });
+
+//console.log(inquirer);
+
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    }
+  ])
+  .then(answers => console.log(answers));
